@@ -3,6 +3,7 @@ class NQueens:
         self.size = size
         self.solutions = []
         self.board = []
+        self.counter = 0  # Solution counter
 
     def is_valid(self, row, col):
         for i in range(row):
@@ -13,6 +14,7 @@ class NQueens:
     def solve(self, row=0):
         if row == self.size:
             self.solutions.append(self.board[:])
+            self.counter += 1  # Increment counter when a solution is found
             return
         for col in range(self.size):
             if self.is_valid(row, col):
@@ -21,6 +23,7 @@ class NQueens:
                 self.board.pop()
 
     def print_solutions(self):
+        print(f"Total solutions found: {self.counter}")  # Display the total number of solutions
         for solution in self.solutions:
             print(f"Found solution: {solution}")
             for col in solution:
